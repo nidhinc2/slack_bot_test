@@ -18,15 +18,16 @@ def handle_mention(body, say, logger):
     response = requests.post(url, json=data)
     try:
         json_response = response.json()
-        dict_response = json_response.dumps()
-        #continue to parse the json the way you need it and then send appropriate emessage using the say function
+        say(f"Hi.")
+        #continue to parse the json the way you need it and then send approporiate message using the say function
+        say(str(json_response))
+
     except ValueError:
         print("Invalid JSON response")
     #can replace hi with some other response using the dict_response summary values    
-    say(f"Hi.")
+    
 
 if __name__ == "__main__":
-
     #xapp token
     handler = SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"])
     handler.start()
